@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<RevitAddIns>
+  <AddIn Type="Command">
+    <Name>Wall Counter</Name>
+    <Text>Wall Counter</Text>
+    <Assembly>NGU.Lab13.dll</Assembly>
+    <AddInId>DDC26549-1BBA-4AA8-B5A5-472C55DB15B8</AddInId>
+    <FullClassName>NGU.Lab13.Commands.WallCounterCommand</FullClassName>
+    <VendorId>NGU</VendorId>
+    <VendorDescription>NGU Students</VendorDescription>
+  </AddIn>
+  
+</RevitAddIns>

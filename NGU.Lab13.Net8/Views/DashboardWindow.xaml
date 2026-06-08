@@ -1,0 +1,275 @@
+<Window x:Class="NGU.Lab13.Views.DashboardWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Smart BOQ Assistant — Project Dashboard"
+        Width="700" Height="630"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="CanResize"
+        MinWidth="650" MinHeight="550"
+        Background="#F9FAFB">
+
+    <Window.Resources>
+        <!-- Modern Control Styles (Design System) -->
+        
+        <!-- Standard Button Style -->
+        <Style x:Key="ModernButtonStyle" TargetType="Button">
+            <Setter Property="Background" Value="#E5E7EB"/>
+            <Setter Property="Foreground" Value="#374151"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Padding" Value="12,6"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="Border" 
+                                Background="{TemplateBinding Background}" 
+                                BorderBrush="{TemplateBinding BorderBrush}" 
+                                BorderThickness="{TemplateBinding BorderThickness}" 
+                                CornerRadius="5">
+                            <ContentPresenter HorizontalAlignment="Center" 
+                                              VerticalAlignment="Center"
+                                              Margin="{TemplateBinding Padding}"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="Border" Property="Background" Value="#D1D5DB"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter TargetName="Border" Property="Background" Value="#9CA3AF"/>
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="False">
+                                <Setter Property="Opacity" Value="0.45"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <!-- Scan Button Style (Royal Blue) -->
+        <Style x:Key="ScanButtonStyle" TargetType="Button" BasedOn="{StaticResource ModernButtonStyle}">
+            <Setter Property="Background" Value="#2563EB"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#1D4ED8"/>
+                </Trigger>
+                <Trigger Property="IsPressed" Value="True">
+                    <Setter Property="Background" Value="#1E40AF"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <!-- BOQ Button Style (Vibrant Purple) -->
+        <Style x:Key="BoqButtonStyle" TargetType="Button" BasedOn="{StaticResource ModernButtonStyle}">
+            <Setter Property="Background" Value="#7C3AED"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#6D28D9"/>
+                </Trigger>
+                <Trigger Property="IsPressed" Value="True">
+                    <Setter Property="Background" Value="#5B21B6"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <!-- AI Button Style (Teal Green) -->
+        <Style x:Key="AiButtonStyle" TargetType="Button" BasedOn="{StaticResource ModernButtonStyle}">
+            <Setter Property="Background" Value="#059669"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#047857"/>
+                </Trigger>
+                <Trigger Property="IsPressed" Value="True">
+                    <Setter Property="Background" Value="#065F46"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <!-- Export CSV Button Style (Orange/Amber) -->
+        <Style x:Key="ExportButtonStyle" TargetType="Button" BasedOn="{StaticResource ModernButtonStyle}">
+            <Setter Property="Background" Value="#D97706"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#B45309"/>
+                </Trigger>
+                <Trigger Property="IsPressed" Value="True">
+                    <Setter Property="Background" Value="#92400E"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <!-- Clean Modern DataGrid Style -->
+        <Style TargetType="DataGrid">
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="BorderBrush" Value="#E5E7EB"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="RowBackground" Value="White"/>
+            <Setter Property="AlternatingRowBackground" Value="#F9FAFB"/>
+            <Setter Property="GridLinesVisibility" Value="Horizontal"/>
+            <Setter Property="HorizontalGridLinesBrush" Value="#F3F4F6"/>
+            <Setter Property="RowHeight" Value="30"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+        </Style>
+
+        <Style TargetType="DataGridColumnHeader">
+            <Setter Property="Background" Value="#F3F4F6"/>
+            <Setter Property="Foreground" Value="#374151"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Padding" Value="10,8"/>
+            <Setter Property="BorderThickness" Value="0,0,0,1"/>
+            <Setter Property="BorderBrush" Value="#D1D5DB"/>
+        </Style>
+
+        <Style TargetType="DataGridCell">
+            <Setter Property="Padding" Value="10,4"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="DataGridCell">
+                        <Border Padding="{TemplateBinding Padding}" Background="{TemplateBinding Background}">
+                            <ContentPresenter VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsSelected" Value="True">
+                    <Setter Property="Background" Value="#DBEAFE"/>
+                    <Setter Property="Foreground" Value="#1E40AF"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
+
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/> <!-- 0: Header / Title -->
+            <RowDefinition Height="Auto"/> <!-- 1: Collapsible Settings -->
+            <RowDefinition Height="Auto"/> <!-- 2: Project Stats GroupBox -->
+            <RowDefinition Height="*"/>    <!-- 3: DataGrid Room List GroupBox -->
+            <RowDefinition Height="Auto"/> <!-- 4: Actions Panel (Buttons) -->
+            <RowDefinition Height="Auto"/> <!-- 5: Status Bar -->
+        </Grid.RowDefinitions>
+
+        <!-- Header -->
+        <StackPanel Grid.Row="0" Margin="0,0,0,12">
+            <TextBlock Text="Smart BOQ Assistant"
+                       FontSize="24" FontWeight="Bold" Foreground="#1E3A8A"/>
+            <TextBlock Text="WPF MVVM Project Dashboard for Revit"
+                       FontSize="12" Foreground="#6B7280" Margin="0,2,0,0"/>
+        </StackPanel>
+
+        <!-- Collapsible Gemini Settings -->
+        <Expander Grid.Row="1" Header="Gemini API Configuration" 
+                  Margin="0,0,0,12" Background="White" BorderBrush="#E5E7EB"
+                  IsExpanded="False" Padding="10,8">
+            <Grid Margin="0,8,0,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                
+                <TextBlock Grid.Column="0" Text="Gemini API Key:" VerticalAlignment="Center" 
+                           FontWeight="SemiBold" Foreground="#4B5563" Margin="0,0,12,0"/>
+                
+                <TextBox Grid.Column="1" Text="{Binding GeminiApiKey, UpdateSourceTrigger=PropertyChanged}" 
+                         Padding="8,6" BorderBrush="#D1D5DB" BorderThickness="1" SelectionBrush="#DBEAFE"
+                         VerticalAlignment="Center" ToolTip="Paste your Google Gemini API Key here"/>
+                
+                <Button Grid.Column="2" Content="Save API Key" Width="110" Height="30" Margin="12,0,0,0"
+                        Style="{StaticResource ScanButtonStyle}" Command="{Binding SaveApiKeyCommand}"/>
+            </Grid>
+        </Expander>
+
+        <!-- Project Summary Card -->
+        <GroupBox Grid.Row="2" Header="Project Summary" Margin="0,0,0,12" Padding="12" Background="White" BorderBrush="#E5E7EB">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <!-- Project Name -->
+                <TextBlock Grid.Row="0" Grid.Column="0" Text="Project Name:" FontWeight="SemiBold" Foreground="#4B5563" Margin="4,3"/>
+                <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding ProjectName}" Margin="12,3" TextTrimming="CharacterEllipsis" FontWeight="Medium" Foreground="#1F2937"/>
+
+                <!-- File Path -->
+                <TextBlock Grid.Row="1" Grid.Column="0" Text="File Path:" FontWeight="SemiBold" Foreground="#4B5563" Margin="4,3"/>
+                <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding FilePath}" Margin="12,3" TextTrimming="CharacterEllipsis" Foreground="#9CA3AF" FontSize="11"/>
+
+                <!-- Total Rooms -->
+                <TextBlock Grid.Row="0" Grid.Column="2" Text="Total Rooms:" FontWeight="SemiBold" Foreground="#4B5563" Margin="24,3,8,3" HorizontalAlignment="Right"/>
+                <TextBlock Grid.Row="0" Grid.Column="3" Text="{Binding TotalRooms}" Margin="8,3" FontWeight="Bold" Foreground="#2563EB" Width="100"/>
+
+                <!-- Total Area -->
+                <TextBlock Grid.Row="1" Grid.Column="2" Text="Total Area:" FontWeight="SemiBold" Foreground="#4B5563" Margin="24,3,8,3" HorizontalAlignment="Right"/>
+                <TextBlock Grid.Row="1" Grid.Column="3" Text="{Binding TotalAreaFormatted}" Margin="8,3" FontWeight="Bold" Foreground="#059669" Width="100"/>
+            </Grid>
+        </GroupBox>
+
+        <!-- Room List DataGrid -->
+        <GroupBox Grid.Row="3" Header="Rooms Database" Margin="0,0,0,12" Background="White" BorderBrush="#E5E7EB">
+            <DataGrid ItemsSource="{Binding BoqItems}"
+                      AutoGenerateColumns="False"
+                      IsReadOnly="True"
+                      SelectionMode="Single"
+                      HeadersVisibility="Column"
+                      RowHeaderWidth="0"
+                      Margin="4">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Room Name" Binding="{Binding RoomName}" Width="*" />
+                    <DataGridTextColumn Header="Room Number" Binding="{Binding RoomNumber}" Width="100" />
+                    <DataGridTextColumn Header="Area (sqm)" Binding="{Binding AreaFormatted}" Width="120" />
+                    <DataGridTextColumn Header="Level" Binding="{Binding Level}" Width="160" />
+                </DataGrid.Columns>
+            </DataGrid>
+        </GroupBox>
+
+        <!-- Action Buttons -->
+        <Grid Grid.Row="4" Margin="0,0,0,12">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+
+            <Button Grid.Column="0" Content="1. Scan Model" Height="36" Margin="0,0,6,0"
+                    Style="{StaticResource ScanButtonStyle}" Command="{Binding ScanModelCommand}"/>
+            
+            <Button Grid.Column="1" Content="2. Generate BOQ" Height="36" Margin="6,0,6,0"
+                    Style="{StaticResource BoqButtonStyle}" Command="{Binding GenerateBoqCommand}"/>
+            
+            <Button Grid.Column="2" Content="3. Generate AI Report" Height="36" Margin="6,0,6,0"
+                    Style="{StaticResource AiButtonStyle}" Command="{Binding GenerateAiReportCommand}"/>
+            
+            <Button Grid.Column="3" Content="4. Export CSV" Height="36" Margin="6,0,6,0"
+                    Style="{StaticResource ExportButtonStyle}" Command="{Binding ExportCsvCommand}"/>
+
+            <Button Grid.Column="4" Content="Close" Width="90" Height="36" Margin="6,0,0,0"
+                    Style="{StaticResource ModernButtonStyle}" Click="OnCloseClick"/>
+        </Grid>
+
+        <!-- Status Bar -->
+        <Border Grid.Row="5" BorderBrush="#E5E7EB" BorderThickness="0,1,0,0" Padding="0,8,0,0">
+            <TextBlock Text="{Binding StatusMessage}" 
+                       FontStyle="Italic" 
+                       Foreground="#4B5563"
+                       TextTrimming="CharacterEllipsis"
+                       FontSize="11"/>
+        </Border>
+    </Grid>
+</Window>

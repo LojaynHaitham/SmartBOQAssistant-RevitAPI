@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RevitAddIns>
+
+	<!-- Application entry point -->
+	<AddIn Type="Application">
+		<Name>NGU Lab13 Ribbon</Name>
+		<FullClassName>NGU.Lab13.Ribbon.App</FullClassName>
+		<Assembly>NGU.Lab13.dll</Assembly>
+		<AddInId>a1b2c3d4-0001-0001-0001-000000000100</AddInId>
+		<VendorId>NGU</VendorId>
+		<VendorDescription>NGU Labs</VendorDescription>
+	</AddIn>
+
+	<AddIn Type="Command">
+		<Name>Rename Rooms</Name>
+		<FullClassName>NGU.Lab13.Commands.RenameRoomsCommand</FullClassName>
+		<Text>Rename Rooms with Level Prefix</Text>
+		<Description>Adds floor level prefix to all room names</Description>
+		<VisibilityMode>AlwaysVisible</VisibilityMode>
+		<Assembly>NGU.Lab13.dll</Assembly>
+		<AddInId>a1b2c3d4-0001-0001-0001-000000000001</AddInId>
+		<VendorId>NGU</VendorId>
+		<VendorDescription>NGU Labs</VendorDescription>
+	</AddIn>
+
+	<AddIn Type="Command">
+		<Name>Create Shared Parameter</Name>
+		<FullClassName>NGU.Lab13.Commands.CreateSharedParamCommand</FullClassName>
+		<Text>Create Fire Rating Shared Parameter</Text>
+		<Description>Creates a Fire Rating shared parameter for Doors and Walls</Description>
+		<VisibilityMode>AlwaysVisible</VisibilityMode>
+		<Assembly>NGU.Lab13.dll</Assembly>
+		<AddInId>a1b2c3d4-0001-0001-0001-000000000002</AddInId>
+		<VendorId>NGU</VendorId>
+		<VendorDescription>NGU Labs</VendorDescription>
+	</AddIn>
+
+	<AddIn Type="Command">
+		<Name>Update Door Fire Rating</Name>
+		<FullClassName>NGU.Lab13.Commands.UpdateDoorFireRatingCommand</FullClassName>
+		<Text>Update Door Fire Ratings</Text>
+		<Description>Sets fire rating for all doors based on adjacent room names</Description>
+		<VisibilityMode>AlwaysVisible</VisibilityMode>
+		<Assembly>NGU.Lab13.dll</Assembly>
+		<AddInId>a1b2c3d4-0001-0001-0001-000000000003</AddInId>
+		<VendorId>NGU</VendorId>
+		<VendorDescription>NGU Labs</VendorDescription>
+	</AddIn>
+
+	<AddIn Type="Command">
+		<Name>Set All Door Comments</Name>
+		<FullClassName>NGU.Lab13.Commands.SetAllDoorCommentsCommand</FullClassName>
+		<Text>Set All Door Comments</Text>
+		<Description>Sets the same Comments value for all doors</Description>
+		<VisibilityMode>AlwaysVisible</VisibilityMode>
+		<Assembly>NGU.Lab13.dll</Assembly>
+		<AddInId>a1b2c3d4-0001-0001-0001-000000000004</AddInId>
+		<VendorId>NGU</VendorId>
+		<VendorDescription>NGU Labs</VendorDescription>
+	</AddIn>
+
+	<AddIn Type="Command">
+		<Name>Update Door Types</Name>
+		<FullClassName>NGU.Lab13.Commands.UpdateDoorTypesCommand</FullClassName>
+		<Text>Update Door Type Comments</Text>
+		<Description>Sets type comments for all door types</Description>
+		<VisibilityMode>AlwaysVisible</VisibilityMode>
+		<Assembly>NGU.Lab13.dll</Assembly>
+		<AddInId>a1b2c3d4-0001-0001-0001-000000000005</AddInId>
+		<VendorId>NGU</VendorId>
+		<VendorDescription>NGU Labs</VendorDescription>
+	</AddIn>
+
+	<AddIn Type="Command">
+		<Name>Wall Mark Numbering</Name>
+		<FullClassName>NGU.Lab13.Commands.WallMarkNumberingCommand</FullClassName>
+		<Text>Number Walls by Level</Text>
+		<Description>Numbers all walls sequentially grouped by level</Description>
+		<VisibilityMode>AlwaysVisible</VisibilityMode>
+		<Assembly>NGU.Lab13.dll</Assembly>
+		<AddInId>a1b2c3d4-0001-0001-0001-000000000006</AddInId>
+		<VendorId>NGU</VendorId>
+		<VendorDescription>NGU Labs</VendorDescription>
+	</AddIn>
+
+	<AddIn Type="Command">
+		<Name>Room Comments Updater</Name>
+		<FullClassName>NGU.Lab13.Commands.RoomCommentsCommand</FullClassName>
+		<Text>Update Room Comments with Area</Text>
+		<Description>Sets room comments to include the room area in square meters</Description>
+		<VisibilityMode>AlwaysVisible</VisibilityMode>
+		<Assembly>NGU.Lab13.dll</Assembly>
+		<AddInId>a1b2c3d4-0001-0001-0001-000000000007</AddInId>
+		<VendorId>NGU</VendorId>
+		<VendorDescription>NGU Labs</VendorDescription>
+	</AddIn>
+
+	<AddIn Type="Command">
+		<Name>Create Inspection Date</Name>
+		<FullClassName>NGU.Lab13.Commands.CreateInspectionDateCommand</FullClassName>
+		<Text>Create Inspection Date Parameter</Text>
+		<Description>Creates an Inspection Date shared parameter and sets today's date for all doors</Description>
+		<VisibilityMode>AlwaysVisible</VisibilityMode>
+		<Assembly>NGU.Lab13.dll</Assembly>
+		<AddInId>a1b2c3d4-0001-0001-0001-000000000008</AddInId>
+		<VendorId>NGU</VendorId>
+		<VendorDescription>NGU Labs</VendorDescription>
+	</AddIn>
+
+	<AddIn Type="Command">
+		<Name>Door Type Reporter</Name>
+		<FullClassName>NGU.Lab13.Commands.DoorTypeReporterCommand</FullClassName>
+		<Text>Door Type Report</Text>
+		<Description>Reports all door types with dimensions and instance counts</Description>
+		<VisibilityMode>AlwaysVisible</VisibilityMode>
+		<Assembly>NGU.Lab13.dll</Assembly>
+		<AddInId>a1b2c3d4-0001-0001-0001-000000000009</AddInId>
+		<VendorId>NGU</VendorId>
+		<VendorDescription>NGU Labs</VendorDescription>
+	</AddIn>
+
+	<AddIn Type="Command">
+		<Name>Smart BOQ Assistant</Name>
+		<FullClassName>NGU.Lab13.Commands.SmartBoqCommand</FullClassName>
+		<Text>Smart BOQ Assistant</Text>
+		<Description>AI-powered Revit BOQ assistant</Description>
+		<VisibilityMode>AlwaysVisible</VisibilityMode>
+		<Assembly>NGU.Lab13.Net8.dll</Assembly>
+		<AddInId>a1b2c3d4-0001-0001-0001-000000000099</AddInId>
+		<VendorId>NGU</VendorId>
+		<VendorDescription>NGU Labs</VendorDescription>
+	</AddIn>
+
+</RevitAddIns>
