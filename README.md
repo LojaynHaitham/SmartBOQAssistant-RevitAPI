@@ -167,7 +167,7 @@ https://www.linkedin.com/posts/lojayn-haitham_revitapi-autodeskrevit-bim-ugcPost
 
 ## GitHub Repository
 
-(Add repository link here)
+https://github.com/LojaynHaitham/SmartBOQAssistant-RevitAPI
 
 ---
 
