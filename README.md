@@ -161,7 +161,7 @@ C:\ProgramData\Autodesk\Revit\Addins\2025
 
 LinkedIn Demo Video:
 
-(Add your LinkedIn post link here)
+https://www.linkedin.com/posts/lojayn-haitham_revitapi-autodeskrevit-bim-ugcPost-7469557287590752256-RUjc/?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEB51CEB_FqQCmIHtS6Vxt6FKAUvzYtcgiU
 
 ---
 
